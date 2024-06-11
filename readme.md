@@ -2,10 +2,9 @@
 
 ### Changes made to this repository
 
-I'm using this repo for mqtt in a react-native mobile app.
+I'm using this repo for mqtt in a chrome extension.
 
-It sends the aws custom authoriser headers that the original lib does not.
-
+The ws lib is only compatible with node, so this repo forces using naitive Websocket when connect mqtt broker
 
 
 Use HTML5 [websockets](https://developer.mozilla.org/en-US/docs/WebSockets) using the Node Streams API.

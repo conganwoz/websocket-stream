@@ -2,7 +2,7 @@
 
 var Transform = require('readable-stream').Transform
 var duplexify = require('duplexify')
-var WS = require('ws')
+// var WS = require('ws')
 var Buffer = require('safe-buffer').Buffer
 
 module.exports = WebSocketStream
@@ -62,12 +62,15 @@ function WebSocketStream(target, protocols, options) {
     // special constructor treatment for native websockets in browsers, see
     // https://github.com/maxogden/websocket-stream/issues/82
     // additionally, if options is supplied and contains headers property, keep initialise with protocols & options
-    let hasAdditionalHeaders = !!(options && options.headers);
-    if (isNative && isBrowser && !hasAdditionalHeaders) {
-      socket = new WS(target, protocols)
-    } else {
-      socket = new WS(target, protocols, options)
-    }
+    // let hasAdditionalHeaders = !!(options && options.headers);
+    // if (isNative && isBrowser && !hasAdditionalHeaders) {
+    //   socket = new WS(target, protocols)
+    // } else {
+    //   socket = new WS(target, protocols, options)
+    // }
+
+    // force using WebSocket - chrome extension
+    socket = new global.WebSocket(target)
 
     socket.binaryType = 'arraybuffer'
   }
